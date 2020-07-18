@@ -62,6 +62,10 @@ export class RecipeEditComponent implements OnInit {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 
+  onDelete(index: number) {
+    (this.recipeForm.get('ingredients') as FormArray).removeAt(index);
+  }
+
   private initForm() {
     let recipeName = '';
     let recipeDescription = '';
