@@ -7,7 +7,7 @@ export class ShoppingListService {
 
   private ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
-    new Ingredient('Toamtoes', 10)
+    new Ingredient('Tomatoes', 10)
   ];
 
   constructor() {}
@@ -27,6 +27,11 @@ export class ShoppingListService {
 
   addIngredients(ingredients: Ingredient[]) {
     this.ingredients.push(...ingredients);
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 }
